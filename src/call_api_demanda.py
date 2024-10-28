@@ -3,6 +3,7 @@ import os
 import http.client
 import json
 import pandas as pd # type: ignore
+import asyncio
 
 import sys
 sys.path.append("../")
@@ -38,7 +39,7 @@ async def get_datos_demanda_evolucion(input_anio, geo_ids):
     return result
 
 async def alamacenar_datos_in_csv():
-     list_anios=[2019,2021,2022]
+     list_anios=[2019,2020,2021]
      for x, y in sop.cod_comunidades.items():
         for i in list_anios:
             diccionario = await get_datos_demanda_evolucion(i, y)

@@ -38,7 +38,7 @@ async def get_datos_demanda_generacion(input_anio, geo_ids):
     return result
 
 async def alamacenar_datos_in_csv():
-     list_anios=[2019,2021,2022]
+     list_anios=[2019,2020,2021]
      for x, y in sop.cod_comunidades.items():
         for i in list_anios:
             diccionario = await get_datos_demanda_generacion(i, y)
