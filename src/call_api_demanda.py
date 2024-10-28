@@ -24,7 +24,7 @@ cod_comunidades = {'Ceuta': 8744,
                     'Región de Murcia': 21,
                     'La Rioja': 20}
 
-def get_datos_demanda_evolucion(input_anio, geo_ids):
+async def get_datos_demanda_evolucion(input_anio, geo_ids):
 
     result = dict()
     try:
@@ -53,11 +53,11 @@ def get_datos_demanda_evolucion(input_anio, geo_ids):
         print(f"Error al hacer peticion api, en get_datos: {url}")
     return result
 
-def alamacenar_datos_in_csv():
+async def alamacenar_datos_in_csv():
      list_anios=[2019,2021,2022]
      for x, y in cod_comunidades.items():
         for i in list_anios:
-            diccionario = get_datos_demanda_evolucion(i, y)
+            diccionario = await get_datos_demanda_evolucion(i, y)
             df_final = pd.DataFrame(diccionario)
             df_final.to_csv(f"../data/{i}_demanda_evolucion_{x}_{y}.csv")
 
