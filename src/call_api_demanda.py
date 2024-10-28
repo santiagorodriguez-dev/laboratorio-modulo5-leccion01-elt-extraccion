@@ -4,25 +4,9 @@ import http.client
 import json
 import pandas as pd # type: ignore
 
-cod_comunidades = {'Ceuta': 8744,
-                    'Melilla': 8745,
-                    'Andalucía': 4,
-                    'Aragón': 5,
-                    'Cantabria': 6,
-                    'Castilla - La Mancha': 7,
-                    'Castilla y León': 8,
-                    'Cataluña': 9,
-                    'País Vasco': 10,
-                    'Principado de Asturias': 11,
-                    'Comunidad de Madrid': 13,
-                    'Comunidad Foral de Navarra': 14,
-                    'Comunitat Valenciana': 15,
-                    'Extremadura': 16,
-                    'Galicia': 17,
-                    'Illes Balears': 8743,
-                    'Canarias': 8742,
-                    'Región de Murcia': 21,
-                    'La Rioja': 20}
+import sys
+sys.path.append("../")
+from src import soporte as sop
 
 async def get_datos_demanda_evolucion(input_anio, geo_ids):
 
@@ -55,7 +39,7 @@ async def get_datos_demanda_evolucion(input_anio, geo_ids):
 
 async def alamacenar_datos_in_csv():
      list_anios=[2019,2021,2022]
-     for x, y in cod_comunidades.items():
+     for x, y in sop.cod_comunidades.items():
         for i in list_anios:
             diccionario = await get_datos_demanda_evolucion(i, y)
             df_final = pd.DataFrame(diccionario)
