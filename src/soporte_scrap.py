@@ -34,7 +34,12 @@ def load_data_ine(p, url):
     driver.find_element('xpath','/html/body/div[1]/main/ul/li/div/div/form[2]/button').click()
     driver.implicitly_wait(10)
     sleep(5)
-    driver.find_element('xpath','//*[@id="export"]/ul/li[4]/label').click()
+    try:
+        driver.find_element('xpath','//*[@id="export"]/ul/li[4]/label').click()
+    except:
+        print("Error al clickear en la descarga del csv, probamos otra vez, hasta que no este en popup")
+        load_data_ine(p, url)
+
     sleep(5)
     driver.close()
 
