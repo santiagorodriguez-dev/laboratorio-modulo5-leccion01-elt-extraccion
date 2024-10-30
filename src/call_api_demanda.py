@@ -44,6 +44,6 @@ async def alamacenar_datos_in_csv():
         for i in list_anios:
             diccionario = await get_datos_demanda_evolucion(i, y)
             df_final = pd.DataFrame(diccionario)
-            df_final.to_csv(f"../data/{i}_demanda_evolucion_{x}_{y}.csv")
+            df_final.to_csv(f"../data/evolucion/{i}_demanda_evolucion_{x}_{y}.csv")
 
 

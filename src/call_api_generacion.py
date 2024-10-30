@@ -45,6 +45,6 @@ async def alamacenar_datos_in_csv():
             df_final = pd.DataFrame(diccionario)
 
             if df_final.shape[0] > 0:
-                df_final.to_csv(f"../data/{i}_generacion_estructura_{x}_{y}.csv")
+                df_final.to_csv(f"../data/generacion/{i}_generacion_estructura_{x}_{y}.csv")
 
 
