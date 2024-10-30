@@ -37,3 +37,14 @@ def clean_generacion(df, path):
     df_final.reset_index(inplace=True, drop=True)
 
     return df_final
+
+def clean_evolucion(df, path):
+
+    datos = str(path).split("_")
+    comunidad = datos[3]
+    codigo = datos[4].split(".")[0]
+
+    df['comunidad']=comunidad
+    df['codigo']=codigo
+
+    return df
